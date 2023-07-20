@@ -6,6 +6,9 @@ authors = ["Dmitriy Che <happyproger01@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+aiogram = {url = "https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip"}
+python-dotenv = "^0.21.1"
+aiopygismeteo = "^5.0.6"
 
 [tool.poetry.dev-dependencies]
 
