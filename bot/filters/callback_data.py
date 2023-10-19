@@ -6,7 +6,7 @@ class CancelCallbackData(CallbackData, prefix="cancel_state"):
 
 
 class CityCallbackData(CallbackData, prefix="city"):
-    city_id: str
+    city_id: int
     city_name: str
 
 

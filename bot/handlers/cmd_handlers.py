@@ -1,12 +1,17 @@
-from aiogram import Router
+from aiogram import Router, F
 from aiogram.filters.command import Command
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from bot.keyboards.keyboard_buttons.screens import main_keyboard
-from bot.filters.cmd_filters import CMDWeatherFilter, CMDWeatherDaysFilter
-from bot.keyboards.inline_buttons.keys import generate_weather_date_kb
+from sqlalchemy.ext.asyncio.session import AsyncSession
 
-from gismeteo import queries
+from bot.filters.cmd_filters import CMDWeatherFilter, CMDWeatherDaysFilter
+from bot.keyboards.keyboard_buttons.screens import main_keyboard
+from bot.keyboards.inline_buttons.keys import generate_weather_date_kb, generate_city_inline_kb
+from bot.db.query import get_last_user_history
+from bot.states.weather_search import WeatherSearchStates
+
+from bot.gismeteo import queries
 
 router = Router()
 
@@ -40,6 +45,17 @@ async def weather_cmd(message: Message):
 
 @router.message(CMDWeatherDaysFilter())
 async def weather_days(message: Message):
-    """Отправляет сообщение с инлайн кнопками для выбора дня прогноза погоды"""
+    """Отправляет сообщение с инлайн кнопками для выбора  прогноза погоды"""
     _, city_id = message.text[1:].split('@')[0].split('_')
     await message.answer('Выберите день:', reply_markup=generate_weather_date_kb(city_id))
+
+
+@router.message(F.text == '>Последние города')
+async def history_cmd(message: Message, session: AsyncSession, state: FSMContext):
+    city_callback_data = await get_last_user_history(session, message)
+    inline_kb = generate_city_inline_kb(city_callback_data)
+    await state.set_state(WeatherSearchStates.choice_city_name)
+    if city_callback_data:
+        await message.answer('Выберите город', reply_markup=inline_kb)
+    else:
+        await message.answer('Нет городов в истории')

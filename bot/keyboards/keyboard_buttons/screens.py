@@ -6,11 +6,11 @@ def main_keyboard() -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
     builder.row(
         KeyboardButton(text='>Узнать погоду'),
-        # KeyboardButton(text='>Настроить расписание')
+
     )
-    # builder.row(
-    #     KeyboardButton(text='>Настройки')
-    # )
+    builder.row(
+        KeyboardButton(text='>Последние города')
+    )
 
     return builder.as_markup(resize_keyboard=True)
 

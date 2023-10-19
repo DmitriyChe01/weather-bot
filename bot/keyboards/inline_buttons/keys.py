@@ -4,7 +4,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from bot.filters.callback_data import CancelCallbackData, CityCallbackData, WeatherDayCallbackData
 from bot.utils import generate_ten_days_of_the_week
 
-from gismeteo.queries import City
+from bot.gismeteo.queries import City
 
 
 def generate_city_inline_kb(cities: list[City]) -> InlineKeyboardMarkup:
