@@ -5,13 +5,13 @@ from aiogram.types import Message
 
 from sqlalchemy.ext.asyncio.session import AsyncSession
 
-from bot.filters.cmd_filters import CMDWeatherFilter, CMDWeatherDaysFilter
-from bot.keyboards.keyboard_buttons.screens import main_keyboard
-from bot.keyboards.inline_buttons.keys import generate_weather_date_kb, generate_city_inline_kb
-from bot.db.query import get_last_user_history
-from bot.states.weather_search import WeatherSearchStates
+from filters.cmd_filters import CMDWeatherFilter, CMDWeatherDaysFilter
+from keyboards.keyboard_buttons.screens import main_keyboard
+from keyboards.inline_buttons.keys import generate_weather_date_kb, generate_city_inline_kb
+from db.query import get_last_user_history
+from states.weather_search import WeatherSearchStates
 
-from bot.gismeteo import queries
+from gismeteo import queries
 
 router = Router()
 

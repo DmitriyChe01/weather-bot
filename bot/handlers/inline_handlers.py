@@ -1,8 +1,8 @@
 from aiogram import Router
 from aiogram import types
 
-from bot.filters.callback_data import WeatherDayCallbackData
-from bot.gismeteo.queries import get_weather_day_of_the_week
+from filters.callback_data import WeatherDayCallbackData
+from gismeteo.queries import get_weather_day_of_the_week
 
 router = Router()
 

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DateTime, BigInteger, Boolean, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from bot.db.base import Base
+from db.base import Base
 from datetime import datetime
 
 city_telegram_user_table = Table(

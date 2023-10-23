@@ -5,7 +5,7 @@ from aiogram.types import TelegramObject
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio.session import AsyncSession
 
-from bot.db.query import get_or_create_user
+from db.query import get_or_create_user
 
 
 class DbSessionMiddleware(BaseMiddleware):

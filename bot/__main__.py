@@ -3,13 +3,13 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.utils.callback_answer import CallbackAnswerMiddleware
-from bot.middlewares.database import DbSessionMiddleware
-from bot.config_reader import config
+from middlewares.database import DbSessionMiddleware
+from config_reader import config
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from bot.handlers import cmd_handlers
-from bot.handlers.FSM import search_city
-from bot.handlers import inline_handlers
+from handlers import cmd_handlers
+from handlers.FSM import search_city
+from handlers import inline_handlers
 
 
 async def main():

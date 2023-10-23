@@ -4,16 +4,16 @@ from aiogram.fsm.context import FSMContext
 from aiogram import types
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from bot.db.query import create_city, create_user_history
-from bot.keyboards.inline_buttons.keys import cancel, generate_city_inline_kb
-from bot.states.weather_search import WeatherSearchStates
-from bot.filters.callback_data import CancelCallbackData, CityCallbackData
+from db.query import create_city, create_user_history
+from keyboards.inline_buttons.keys import cancel, generate_city_inline_kb
+from states.weather_search import WeatherSearchStates
+from filters.callback_data import CancelCallbackData, CityCallbackData
 
-from bot.gismeteo.queries import search_city
-from bot.resources.res import COMMANDS_FOR_GET_WEATHER
-from bot.gismeteo.queries import City
+from gismeteo.queries import search_city
+from resources.res import COMMANDS_FOR_GET_WEATHER
+from gismeteo.queries import City
 
-from bot.db.models import TelegramUser
+from db.models import TelegramUser
 
 router = Router()
 

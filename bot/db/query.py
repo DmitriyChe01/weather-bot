@@ -7,12 +7,12 @@ from sqlalchemy.ext.asyncio.session import AsyncSession
 
 from aiogram import types
 
-from bot.db import TelegramUser, City, city_telegram_user_table
+from db import TelegramUser, City, city_telegram_user_table
 from typing import Dict, Any
 from bot.gismeteo.queries import City as CityCallbackData
 
-from bot.filters.callback_data import CityCallbackData
-from bot.db.models import city_telegram_user_table as city_user
+from filters.callback_data import CityCallbackData
+from db.models import city_telegram_user_table as city_user
 
 
 async def get_or_create_user(session: AsyncSession, data: Dict[str, Any]):
