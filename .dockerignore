@@ -1,0 +1,8 @@
+.idea/
+__pycache__/
+
+.env*
+poetry.lock
+poetry.toml
+*.md
+Dockerfile

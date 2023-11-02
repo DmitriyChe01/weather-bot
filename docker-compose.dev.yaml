@@ -1,0 +1,33 @@
+version: '3.8'
+networks:
+  waiting_for_conteiner:
+
+services:
+
+  bot:
+    build: ./bot
+    command: >
+      sh -c "alembic upgrade head &&
+      python3 -u __main__.py"
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - "db:database"
+
+  db:
+    image: postgres:16.0-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=7620010195
+      - POSTGRES_DB=weather
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U weather" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+

@@ -1,6 +1,5 @@
 import logging
 
-from sqlalchemy import ChunkedIteratorResult
 from sqlalchemy import select, insert
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio.session import AsyncSession
@@ -9,7 +8,7 @@ from aiogram import types
 
 from db import TelegramUser, City, city_telegram_user_table
 from typing import Dict, Any
-from bot.gismeteo.queries import City as CityCallbackData
+from gismeteo.queries import City as CityCallbackData
 
 from filters.callback_data import CityCallbackData
 from db.models import city_telegram_user_table as city_user
