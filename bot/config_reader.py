@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import SecretStr, PostgresDsn, RedisDsn
+from pydantic import SecretStr, PostgresDsn, RedisDsn, IPvAnyAddress
 
 
 class Settings(BaseSettings):
@@ -17,7 +17,13 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
 
-    NGINX_HOST: str
+    WEB_HOOK: bool
+
+    NGINX_HOST: str  # domain
+    WEBHOOK_PATH: str  # path
+
+    WEB_SERVER_HOST: IPvAnyAddress
+    WEB_SERVER_PORT: int
 
     @property
     def db_url(self) -> PostgresDsn:
@@ -26,6 +32,14 @@ class Settings(BaseSettings):
     @property
     def redis_url(self) -> RedisDsn:
         return f'{self.REDIS_DRIVER}://{self.REDIS_HOST}:{self.REDIS_PORT}'
+
+    @property
+    def webhook_host(self) -> str:
+        return f'https://{self.NGINX_HOST}'
+
+    @property
+    def webhook_url(self) -> str:
+        return f'{self.webhook_host}{self.WEBHOOK_PATH}'
 
 
 config = Settings()
