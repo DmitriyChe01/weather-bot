@@ -3,8 +3,7 @@ from pydantic import SecretStr, PostgresDsn, RedisDsn
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=('.env', '.env.dev', '.env.prod'), env_file_encoding='utf-8',
-                                      extra='ignore')
+    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
     bot_token: SecretStr
     DB_DRIVER: str
     DB_USER: str
@@ -16,8 +15,6 @@ class Settings(BaseSettings):
     REDIS_DRIVER: str
     REDIS_HOST: str
     REDIS_PORT: int
-
-    NGINX_HOST: str
 
     @property
     def db_url(self) -> PostgresDsn:
