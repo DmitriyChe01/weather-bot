@@ -24,7 +24,7 @@ async def main():
 
     redis_storage = RedisStorage.from_url(config.redis_url.__str__())
 
-    bot = Bot(token=config.bot_token.get_secret_value(), parse_mode='HTML')
+    bot = Bot(token=config.BOT_TOKEN, parse_mode='HTML')
     dp = Dispatcher(storage=redis_storage)
 
     dp.update.middleware(DbSessionMiddleware(session_pool=sessionmaker))

@@ -7,13 +7,13 @@ authors = ["Dmitriy Che <happyproger01@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 python-dotenv = "^0.21.1"
-aiopygismeteo = "^5.0.6"
 aiogram = { version = "^3.0.0b8", allow-prereleases = true}
 sqlalchemy = "^2.0.19"
 alembic = "^1.11.1"
 asyncpg = "^0.28.0"
 pydantic-settings = "^2.0.2"
 redis = "^5.0.1"
+aiopygismeteo = "^5.2.1"
 
 [tool.poetry.dev-dependencies]
 
